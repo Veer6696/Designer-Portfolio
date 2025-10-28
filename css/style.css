@@ -290,44 +290,199 @@ span {
     display: inline-block;
  }
 
- .video-row {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 3rem 0;
+.video-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
-/* Video Column Styling */
-.video-row .video-column {
-    position: relative;
-    text-align: center;
-    overflow: hidden;
-    opacity: 0;  /* Initially Hidden */
-    transform: translateY(50px); /* Starts Lower */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+.video-column {
+  flex: 1 1 calc(50% - 1rem);
+  text-align: center;
 }
 
-/* When Video is Visible, Apply the Animation */
-.video-row .video-column.show {
-    opacity: 1;
-    transform: translateY(0);
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
-/* Video Styling */
-.video-row .video-column video {
-    width: 510px;
-    border-radius: 10px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.4s ease;
 }
 
-/* Video Hover Effects */
-.video-row .video-column video:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+.video-column h1 {
+  font-size: 2rem;
+  margin-top: 0.8rem;
+  color: var(--text-color);
 }
+
+.video-column:hover iframe {
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .video-column {
+    flex: 1 1 100%;
+  }
+}
+
+/* ===== PPT SECTION ===== */
+.ppt {
+  padding: 5rem 9%;
+  background: var(--second-bg-color);
+}
+
+.ppt .heading {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+.ppt-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.ppt-column {
+  flex: 1 1 45%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.ppt-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 ratio */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.ppt-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.ppt-column a {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 2rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ppt-column a:hover {
+  color: var(--main-color);
+}
+
+/* Posters Section */
+/* Posters Section */
+.poster {
+  width: 50%; /* reduced from 60% -> smaller card width */
+  max-width: 360px; /* was 420px */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(63, 69, 81, 0.16);
+  padding: 0.8em;
+  overflow: hidden;
+}
+
+.posters .heading {
+  font-size: 3rem; /* slightly smaller heading */
+  margin-bottom: 16px;
+}
+.posters .heading span {
+  color: var(--main-color);
+}
+
+/* Row of posters */
+.poster-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem; /* reduced gap */
+  flex-wrap: wrap;
+}
+
+/* Each poster box */
+.poster-column {
+  flex: 1 1 40%; /* narrower columns */
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Embedded Canva poster (reduced height) */
+.poster-embed {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 90%; /* was 130%, ~30% smaller now */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  background: #0b0f14;
+}
+
+.poster-embed iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* Poster link below each frame */
+.poster-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 2rem; /* slightly smaller text */
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.poster-link:hover {
+  color: var(--main-color);
+  transform: translateY(-2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .poster-row {
+    flex-direction: column;
+  }
+  .poster-column {
+    flex: 1 1 100%;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .poster-embed {
+    padding-top: 75%; /* even smaller on mobile */
+  }
+  .poster-link {
+    font-size: 1rem;
+  }
+}
+
 
  /* .title {
     display: flex;
@@ -651,4 +806,184 @@ section .title::after{
 
 .portfolio-box:hover .portfolio-content {
     opacity: 1;
+}
+
+/* ========================= */
+/*   RESPONSIVE DESIGN ADDON */
+/* ========================= */
+
+/* ===== Tablet (max-width: 1024px) ===== */
+@media (max-width: 1024px) {
+  html {
+    font-size: 55%;
+  }
+
+  .header {
+    padding: 2rem 5%;
+  }
+
+  section {
+    padding: 8rem 5% 2rem;
+  }
+
+  .video-row,
+  .ppt-row,
+  .poster-row,
+  .services-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .video-column,
+  .ppt-column,
+  .poster-column {
+    flex: 1 1 100%;
+    max-width: 80%;
+  }
+
+  .home-content h1 {
+    font-size: 3.6rem;
+  }
+}
+
+/* ===== Mobile (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+
+  #menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-color);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 1.5rem;
+    border-top: 0.1rem solid var(--main-color);
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+
+  .home {
+    flex-direction: column;
+    padding: 10rem 5% 2rem;
+    background-position: center;
+  }
+
+  .home-content {
+    text-align: center;
+  }
+
+  .btn-box {
+    justify-content: center;
+  }
+
+  .home-sci {
+    position: static;
+    margin-top: 3rem;
+    justify-content: center;
+  }
+
+  .about {
+    padding: 6rem 5%;
+  }
+
+  .about-img {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .about-content p {
+    font-size: 1.4rem;
+  }
+
+  .video-column,
+  .ppt-column,
+  .poster-column {
+    flex: 1 1 100%;
+    max-width: 95%;
+  }
+
+  .poster-embed {
+    padding-top: 75%;
+  }
+
+  .ppt-embed {
+    padding-top: 65%;
+  }
+
+  .portfolio-box {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .contact form .input-box .input-field {
+    width: 100%;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+}
+
+/* ===== Small Mobile (max-width: 480px) ===== */
+@media (max-width: 480px) {
+  html {
+    font-size: 45%;
+  }
+
+  .home-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .home-content .text-animate h3 {
+    font-size: 2.2rem;
+  }
+
+  .video-wrapper,
+  .ppt-embed,
+  .poster-embed {
+    padding-top: 70%;
+  }
+
+  .poster-link,
+  .ppt-column a {
+    font-size: 1.6rem;
+  }
+
+  .btn-box {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+    gap: 1.2rem;
+  }
+
+  .btn-box .btn {
+    width: 100%;
+  }
+
+  .portfolio-box {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .contact form {
+    padding: 0 2rem;
+  }
+
+  .footer-text p {
+    font-size: 1.3rem;
+  }
 }

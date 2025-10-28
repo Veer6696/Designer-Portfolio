@@ -654,10 +654,13 @@ section .title::after{
 }
 
 #preloader{
-    background:#000  url('../Namaste_India.json.git') no-repeat center;
+    background:#000 url('../images/Namaste_India.json.gif') no-repeat center;
     background-size: 15%;
     height: 100vh;
     width: 100%;
     position: fixed;
-    z-index: 100;
+    top: 0;
+    left: 0;
+    z-index: 9999; /* ensure it sits above the header */
+    display: block;
 }
